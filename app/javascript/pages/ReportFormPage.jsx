@@ -61,7 +61,7 @@ const ReportFormPage = ({ horse_name, date, updateCurrentReport, createReport })
       <br />
       <button type="submit">Speichern</button>
     </form>
-  </div>
+    </div>
 )
 
 ReportFormPage.propTypes = {
