@@ -1,19 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { UPDATE_CURRENT_REPORT, SAVE_CURRENT_REPORT } from '../store/modules/reports'
+import { UPDATE_CURRENT_REPORT, createReport } from '../store/modules/reports'
 
 const mapStateToProps = state => {
-  const { horse_name } = state.reports.currentReport
+  const { horse_name, date } = state.reports.currentReport
+
   return {
-    horse_name
+    horse_name,
+    date
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     updateCurrentReport: event => {
-      const { name, value } = event.target
+      const {name, value} = event.target
       return dispatch({
         type: UPDATE_CURRENT_REPORT,
         payload: {
@@ -22,24 +24,38 @@ const mapDispatchToProps = dispatch => {
         }
       })
     },
-    saveCurrentReport: event => {
+    createReport: event => {
+      event.preventDefault()
+      return dispatch(createReport())
+    },
+
+    showCreate: event => {
       event.preventDefault()
       return dispatch({
-        type: SAVE_CURRENT_REPORT
+        type: TOGGLE_SHOW_CREATE
       })
     }
   }
 }
 
-const ReportFormPage = ({ horse_name, updateCurrentReport, saveCurrentReport }) => (
+const ReportFormPage = ({ horse_name, date, updateCurrentReport, createReport }) => (
+
   <div>
     <h1>New Report</h1>
-    <form onSubmit={saveCurrentReport}>
+    <form onSubmit={createReport}>
       <label>Pferde Name:</label>
       <input
         type="text"
         name="horse_name"
         value={horse_name}
+        onChange={updateCurrentReport}
+      />
+      <br />
+      <label>Datum:</label>
+      <input
+        type="date"
+        name="date"
+        value={date}
         onChange={updateCurrentReport}
       />
       <br />
@@ -50,8 +66,10 @@ const ReportFormPage = ({ horse_name, updateCurrentReport, saveCurrentReport }) 
 
 ReportFormPage.propTypes = {
   horse_name: PropTypes.string,
+  date: PropTypes.string,
   updateCurrentReport: PropTypes.func,
-  saveCurrentReport: PropTypes.func
+  saveCurrentReport: PropTypes.func,
+  createReport: PropTypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReportFormPage)
