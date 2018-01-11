@@ -10,3 +10,16 @@
   font-size: 2rem;
   color: white;
 }
+
+.week {
+  display: grid;
+  grid-template-rows: 20px auto;
+  grid-template-columns: repeat(7, 1fr);
+  height: 80vh;
+}
+
+.day {
+  border: 1px solid mediumaquamarine;
+  //min-height: 50px;
+  align-self: stretch;
+}

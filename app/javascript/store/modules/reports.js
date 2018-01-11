@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon'
 export const UPDATE_CURRENT_REPORT = 'UPDATE_CURRENT_REPORT'
 export const SAVE_CURRENT_REPORT = 'SAVE_CURRENT_REPORT'
 
@@ -10,7 +11,24 @@ const initialState = {
     date: null,
     rider: ''
   },
-  entities: []
+  entities: [
+    {
+      horse_name: 'Foo',
+      activity: '',
+      location: '',
+      duration: 0,
+      date: DateTime.local(),
+      rider: ''
+    },
+    {
+      horse_name: 'Bar',
+      activity: '',
+      location: '',
+      duration: 0,
+      date: DateTime.local(),
+      rider: ''
+    }
+  ]
 }
 
 export default (state = initialState, action) => {
