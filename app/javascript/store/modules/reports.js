@@ -1,4 +1,5 @@
 export const UPDATE_CURRENT_REPORT = 'UPDATE_CURRENT_REPORT'
+export const SAVE_CURRENT_REPORT = 'SAVE_CURRENT_REPORT'
 
 const initialState = {
   currentReport: {
@@ -23,6 +24,15 @@ export default (state = initialState, action) => {
           ...currentReport,
           [name]: value
         }
+      }
+    }
+
+    case SAVE_CURRENT_REPORT: {
+      const { currentReport, entities } = state
+      return {
+        ...state,
+        currentReport: initialState.currentReport,
+        entities: [...entities, currentReport]
       }
     }
 
