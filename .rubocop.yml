@@ -1,0 +1,59 @@
+AllCops:
+  DisplayCopNames: True
+  Exclude:
+    - 'config.ru'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+  TargetRubyVersion: 2.4
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/FirstParameterIndentation:
+  EnforcedStyle: consistent
+
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*'
+    - 'lib/tasks/**/*'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'test/**/*'
+
+Metrics/LineLength:
+  Exclude:
+    - 'test/**/*'
+
+Bundler/OrderedGems:
+  Enabled: false
