@@ -29,11 +29,10 @@ export default (state = initialState, action) => {
 
     case SAVE_CURRENT_REPORT: {
       const { currentReport, entities } = state
-      entities.push(currentReport)
       return {
         ...state,
         currentReport: initialState.currentReport,
-        entities
+        entities: [...entities, currentReport]
       }
     }
 
